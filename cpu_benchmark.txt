@@ -1,0 +1,47 @@
+Benchmark                                     Time        CPU     Iterations
+CPU/BM_Morton/Threads:1/iterations:50         44.4 ms     0.423 ms     50
+CPU/BM_Morton/Threads:2/iterations:50         22.8 ms     0.337 ms     50
+CPU/BM_Morton/Threads:4/iterations:50         11.8 ms     0.740 ms     50
+CPU/BM_Sort/Threads:1/iterations:50           89.0 ms     0.914 ms     50
+CPU/BM_Sort/Threads:2/iterations:50           90.6 ms     0.821 ms     50
+CPU/BM_Sort/Threads:4/iterations:50           20.0 ms     1.87 ms      50
+CPU/BM_RemoveDup/Threads:1/iterations:50      10.9 ms     0.221 ms     50
+CPU/BM_RemoveDup/Threads:2/iterations:50      13.4 ms     0.145 ms     50
+CPU/BM_RemoveDup/Threads:4/iterations:50      12.0 ms     0.106 ms     50
+CPU/BM_RadixTree/Threads:1/iterations:50      226 ms      0.493 ms     50
+CPU/BM_RadixTree/Threads:2/iterations:50      111 ms      0.386 ms     50
+CPU/BM_RadixTree/Threads:4/iterations:50      56.1 ms     0.416 ms     50
+CPU/BM_EdgeCount/Threads:1/iterations:50      11.9 ms     0.397 ms     50
+CPU/BM_EdgeCount/Threads:2/iterations:50      10.5 ms     0.198 ms     50
+CPU/BM_EdgeCount/Threads:4/iterations:50      3.80 ms     0.198 ms     50
+CPU/BM_Octree/Threads:1/iterations:50         95.3 ms     0.714 ms     50
+CPU/BM_Octree/Threads:2/iterations:50         53.6 ms     0.593 ms     50
+CPU/BM_Octree/Threads:4/iterations:50         28.3 ms     1.49 ms      50
+
+Benchmark                                     Time        CPU     Iterations
+CPU/BM_Morton/Threads:1/iterations:50         22.2 ms     0.171 ms     50
+CPU/BM_Morton/Threads:2/iterations:50         9.05 ms     0.173 ms     50
+CPU/BM_Sort/Threads:1/iterations:50           46.2 ms     0.253 ms     50
+CPU/BM_Sort/Threads:2/iterations:50           21.5 ms     0.947 ms     50
+CPU/BM_RemoveDup/Threads:1/iterations:50      2.05 ms     0.032 ms     50
+CPU/BM_RemoveDup/Threads:2/iterations:50      2.80 ms     0.032 ms     50
+CPU/BM_RadixTree/Threads:1/iterations:50      94.1 ms     0.150 ms     50
+CPU/BM_RadixTree/Threads:2/iterations:50      45.0 ms     0.189 ms     50
+CPU/BM_EdgeCount/Threads:1/iterations:50      3.51 ms     0.049 ms     50
+CPU/BM_EdgeCount/Threads:2/iterations:50      2.26 ms     0.070 ms     50
+CPU/BM_Octree/Threads:1/iterations:50         36.0 ms     0.199 ms     50
+CPU/BM_Octree/Threads:2/iterations:50         19.7 ms     0.388 ms     50
+
+Benchmark                                     Time        CPU     Iterations
+CPU/BM_Morton/Threads:1/iterations:50         14.6 ms     0.218 ms     50
+CPU/BM_Morton/Threads:2/iterations:50         5.61 ms     0.118 ms     50
+CPU/BM_Sort/Threads:1/iterations:50           23.5 ms     0.187 ms     50
+CPU/BM_Sort/Threads:2/iterations:50           9.21 ms     0.262 ms     50
+CPU/BM_RemoveDup/Threads:1/iterations:50      1.32 ms     0.044 ms     50
+CPU/BM_RemoveDup/Threads:2/iterations:50      1.83 ms     0.033 ms     50
+CPU/BM_RadixTree/Threads:1/iterations:50      70.6 ms     0.144 ms     50
+CPU/BM_RadixTree/Threads:2/iterations:50      36.0 ms     0.178 ms     50
+CPU/BM_EdgeCount/Threads:1/iterations:50      1.38 ms     0.047 ms     50
+CPU/BM_EdgeCount/Threads:2/iterations:50      1.06 ms     0.019 ms     50
+CPU/BM_Octree/Threads:1/iterations:50         27.1 ms     0.086 ms     50
+CPU/BM_Octree/Threads:2/iterations:50         12.2 ms     0.355 ms     50

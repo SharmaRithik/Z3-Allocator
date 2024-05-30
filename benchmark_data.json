@@ -1,0 +1,98 @@
+{
+  "small_cores": [
+    {
+      "task": "BM_Morton",
+      "threads": 4,
+      "time": 11.8
+    },
+    {
+      "task": "BM_Sort",
+      "threads": 4,
+      "time": 20.0
+    },
+    {
+      "task": "BM_RemoveDup",
+      "threads": 4,
+      "time": 12.0
+    },
+    {
+      "task": "BM_RadixTree",
+      "threads": 4,
+      "time": 56.1
+    },
+    {
+      "task": "BM_EdgeCount",
+      "threads": 4,
+      "time": 3.8
+    },
+    {
+      "task": "BM_Octree",
+      "threads": 4,
+      "time": 28.3
+    }
+  ],
+  "medium_cores": [
+    {
+      "task": "BM_Morton",
+      "threads": 2,
+      "time": 9.05
+    },
+    {
+      "task": "BM_Sort",
+      "threads": 2,
+      "time": 21.5
+    },
+    {
+      "task": "BM_RemoveDup",
+      "threads": 2,
+      "time": 2.8
+    },
+    {
+      "task": "BM_RadixTree",
+      "threads": 2,
+      "time": 45.0
+    },
+    {
+      "task": "BM_EdgeCount",
+      "threads": 2,
+      "time": 2.26
+    },
+    {
+      "task": "BM_Octree",
+      "threads": 2,
+      "time": 19.7
+    }
+  ],
+  "big_cores": [
+    {
+      "task": "BM_Morton",
+      "threads": 2,
+      "time": 5.61
+    },
+    {
+      "task": "BM_Sort",
+      "threads": 2,
+      "time": 9.21
+    },
+    {
+      "task": "BM_RemoveDup",
+      "threads": 2,
+      "time": 1.83
+    },
+    {
+      "task": "BM_RadixTree",
+      "threads": 2,
+      "time": 36.0
+    },
+    {
+      "task": "BM_EdgeCount",
+      "threads": 2,
+      "time": 1.06
+    },
+    {
+      "task": "BM_Octree",
+      "threads": 2,
+      "time": 12.2
+    }
+  ]
+}
