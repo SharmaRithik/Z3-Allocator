@@ -1,0 +1,166 @@
+[1/2] Running bench-cpu-pinned on device: 3A021JEHN02756
+build/android/arm64-v8a/release/bench-cpu-pinned: 1 file pushed, 0 skipped. 445.7 MB/s (1325192 bytes in 0.003s)
+ppl/vulkan/shaders/compiled_shaders/find_dups.spv: 1 file pushed, 0 skipped. 33.2 MB/s (2768 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/init.spv: 1 file pushed, 0 skipped. 71.3 MB/s (5272 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/move_dups.spv: 1 file pushed, 0 skipped. 40.9 MB/s (2556 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/morton.spv: 1 file pushed, 0 skipped. 69.9 MB/s (4412 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/edge_count.spv: 1 file pushed, 0 skipped. 47.0 MB/s (2960 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/scan.spv: 1 file pushed, 0 skipped. 66.9 MB/s (5684 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/octree.spv: 1 file pushed, 0 skipped. 186.8 MB/s (13872 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/new_radix_sort.spv: 1 file pushed, 0 skipped. 243.7 MB/s (20532 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/downsweep.spv: 1 file pushed, 0 skipped. 238.3 MB/s (16004 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/radix_sort_downsweep.spv: 1 file pushed, 0 skipped. 283.4 MB/s (22620 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/histogram_64.spv: 1 file pushed, 0 skipped. 98.5 MB/s (5916 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/radix_sort_downsweep_scan.spv: 1 file pushed, 0 skipped. 87.0 MB/s (7532 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/radix_sort_upsweep.spv: 1 file pushed, 0 skipped. 112.4 MB/s (6336 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/prefix_sum.spv: 1 file pushed, 0 skipped. 221.5 MB/s (15696 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/build_radix_tree.spv: 1 file pushed, 0 skipped. 166.8 MB/s (10244 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/reduce.spv: 1 file pushed, 0 skipped. 78.4 MB/s (6480 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/histogram.spv: 1 file pushed, 0 skipped. 206.4 MB/s (13880 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/radix_sort_scan.spv: 1 file pushed, 0 skipped. 80.8 MB/s (4616 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/radix_sort_64.spv: 1 file pushed, 0 skipped. 267.3 MB/s (26768 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/prefix_sum_64.spv: 1 file pushed, 0 skipped. 233.8 MB/s (18776 bytes in 0.000s)
+[DEBUG] Valid small cores: 0 1 2 3 
+[DEBUG] Valid medium cores: 4 5 
+[DEBUG] Valid big cores: 6 7 
+name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message
+"CPU_Pinned/MortonCode/Small/1/iterations:40",40,31.7753,0.503699,ms,,,,,
+"CPU_Pinned/MortonCode/Small/2/iterations:40",40,11.2703,0.361754,ms,,,,,
+"CPU_Pinned/MortonCode/Small/3/iterations:40",40,6.98762,0.576181,ms,,,,,
+"CPU_Pinned/MortonCode/Small/4/iterations:40",40,5.73755,0.800753,ms,,,,,
+"CPU_Pinned/MortonCode/Medium/1/iterations:40",40,4.79684,0.0602183,ms,,,,,
+"CPU_Pinned/MortonCode/Medium/2/iterations:40",40,1.74709,0.0730591,ms,,,,,
+"CPU_Pinned/MortonCode/Big/1/iterations:40",40,3.99453,0.0255707,ms,,,,,
+"CPU_Pinned/MortonCode/Big/2/iterations:40",40,2.05429,0.0165752,ms,,,,,
+"CPU_Pinned/RadixSort/Small/1/iterations:40",40,38.4515,0.684748,ms,,,,,
+"CPU_Pinned/RadixSort/Small/2/iterations:40",40,25.5507,0.700369,ms,,,,,
+"CPU_Pinned/RadixSort/Small/3/iterations:40",40,6.18027,0.547096,ms,,,,,
+"CPU_Pinned/RadixSort/Small/4/iterations:40",40,4.71714,0.408426,ms,,,,,
+"CPU_Pinned/RadixSort/Medium/1/iterations:40",40,4.91691,0.15516,ms,,,,,
+"CPU_Pinned/RadixSort/Medium/2/iterations:40",40,1.85228,0.156607,ms,,,,,
+"CPU_Pinned/RadixSort/Big/1/iterations:40",40,4.43574,0.202076,ms,,,,,
+"CPU_Pinned/RadixSort/Big/2/iterations:40",40,3.83435,0.225744,ms,,,,,
+"CPU_Pinned/RemoveDuplicates/Small/1/iterations:40",40,0.758745,0.745595,ms,,,,,
+"CPU_Pinned/RemoveDuplicates/Small/2/iterations:40",40,0.629823,0.621448,ms,,,,,
+"CPU_Pinned/RemoveDuplicates/Small/3/iterations:40",40,0.519363,0.511257,ms,,,,,
+"CPU_Pinned/RemoveDuplicates/Small/4/iterations:40",40,0.514521,0.507744,ms,,,,,
+"CPU_Pinned/RemoveDuplicates/Medium/1/iterations:40",40,0.461329,0.455081,ms,,,,,
+"CPU_Pinned/RemoveDuplicates/Medium/2/iterations:40",40,0.432208,0.426254,ms,,,,,
+"CPU_Pinned/RemoveDuplicates/Big/1/iterations:40",40,0.338799,0.335183,ms,,,,,
+"CPU_Pinned/RemoveDuplicates/Big/2/iterations:40",40,0.330083,0.328446,ms,,,,,
+"CPU_Pinned/BuildRadixTree/Small/1/iterations:40",40,37.5372,0.417686,ms,,,,,
+"CPU_Pinned/BuildRadixTree/Small/2/iterations:40",40,19.9873,0.355825,ms,,,,,
+"CPU_Pinned/BuildRadixTree/Small/3/iterations:40",40,12.8189,0.507025,ms,,,,,
+"CPU_Pinned/BuildRadixTree/Small/4/iterations:40",40,10.0725,0.859549,ms,,,,,
+"CPU_Pinned/BuildRadixTree/Medium/1/iterations:40",40,17.2946,0.0986033,ms,,,,,
+"CPU_Pinned/BuildRadixTree/Medium/2/iterations:40",40,5.98896,0.169414,ms,,,,,
+"CPU_Pinned/BuildRadixTree/Big/1/iterations:40",40,18.8019,0.0495779,ms,,,,,
+"CPU_Pinned/BuildRadixTree/Big/2/iterations:40",40,5.3413,0.14309,ms,,,,,
+"CPU_Pinned/EdgeCount/Small/1/iterations:40",40,4.60707,0.0907369,ms,,,,,
+"CPU_Pinned/EdgeCount/Small/2/iterations:40",40,1.77616,0.0673523,ms,,,,,
+"CPU_Pinned/EdgeCount/Small/3/iterations:40",40,1.32531,0.195393,ms,,,,,
+"CPU_Pinned/EdgeCount/Small/4/iterations:40",40,0.961618,0.0983735,ms,,,,,
+"CPU_Pinned/EdgeCount/Medium/1/iterations:40",40,2.39646,0.0334077,ms,,,,,
+"CPU_Pinned/EdgeCount/Medium/2/iterations:40",40,0.934354,0.0216513,ms,,,,,
+"CPU_Pinned/EdgeCount/Big/1/iterations:40",40,2.34559,0.0376618,ms,,,,,
+"CPU_Pinned/EdgeCount/Big/2/iterations:40",40,1.24405,0.0198414,ms,,,,,
+"CPU_Pinned/EdgeOffset/Small/1/iterations:40",40,0.956926,0.0310038,ms,,,,,
+"CPU_Pinned/EdgeOffset/Small/2/iterations:40",40,0.861577,0.0294392,ms,,,,,
+"CPU_Pinned/EdgeOffset/Small/3/iterations:40",40,0.832108,0.0346427,ms,,,,,
+"CPU_Pinned/EdgeOffset/Small/4/iterations:40",40,1.53569,0.0901032,ms,,,,,
+"CPU_Pinned/EdgeOffset/Medium/1/iterations:40",40,1.55046,0.132949,ms,,,,,
+"CPU_Pinned/EdgeOffset/Medium/2/iterations:40",40,0.321214,0.0243163,ms,,,,,
+"CPU_Pinned/EdgeOffset/Big/1/iterations:40",40,0.393834,0.0126446,ms,,,,,
+"CPU_Pinned/EdgeOffset/Big/2/iterations:40",40,1.14994,0.0404541,ms,,,,,
+"CPU_Pinned/BuildOctree/Small/1/iterations:40",40,54.8818,0.874624,ms,,,,,
+"CPU_Pinned/BuildOctree/Small/2/iterations:40",40,28.6743,0.761182,ms,,,,,
+"CPU_Pinned/BuildOctree/Small/3/iterations:40",40,15.4906,0.685686,ms,,,,,
+"CPU_Pinned/BuildOctree/Small/4/iterations:40",40,12.6272,0.965791,ms,,,,,
+"CPU_Pinned/BuildOctree/Medium/1/iterations:40",40,18.5048,0.182994,ms,,,,,
+"CPU_Pinned/BuildOctree/Medium/2/iterations:40",40,5.61272,0.232615,ms,,,,,
+"CPU_Pinned/BuildOctree/Big/1/iterations:40",40,15.4007,0.125544,ms,,,,,
+"CPU_Pinned/BuildOctree/Big/2/iterations:40",40,4.7797,0.154957,ms,,,,,
+
+[2/2] Running bench-cpu-pinned on device: RFCT80DAADN
+build/android/arm64-v8a/release/bench-cpu-pinned: 1 file pushed, 0 skipped. 419.8 MB/s (1325192 bytes in 0.003s)
+ppl/vulkan/shaders/compiled_shaders/find_dups.spv: 1 file pushed, 0 skipped. 47.5 MB/s (2768 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/init.spv: 1 file pushed, 0 skipped. 80.0 MB/s (5272 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/move_dups.spv: 1 file pushed, 0 skipped. 50.4 MB/s (2556 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/morton.spv: 1 file pushed, 0 skipped. 45.6 MB/s (4412 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/edge_count.spv: 1 file pushed, 0 skipped. 54.3 MB/s (2960 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/scan.spv: 1 file pushed, 0 skipped. 64.3 MB/s (5684 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/octree.spv: 1 file pushed, 0 skipped. 195.0 MB/s (13872 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/new_radix_sort.spv: 1 file pushed, 0 skipped. 271.8 MB/s (20532 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/downsweep.spv: 1 file pushed, 0 skipped. 237.1 MB/s (16004 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/radix_sort_downsweep.spv: 1 file pushed, 0 skipped. 221.6 MB/s (22620 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/histogram_64.spv: 1 file pushed, 0 skipped. 103.3 MB/s (5916 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/radix_sort_downsweep_scan.spv: 1 file pushed, 0 skipped. 132.7 MB/s (7532 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/radix_sort_upsweep.spv: 1 file pushed, 0 skipped. 74.5 MB/s (6336 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/prefix_sum.spv: 1 file pushed, 0 skipped. 234.5 MB/s (15696 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/build_radix_tree.spv: 1 file pushed, 0 skipped. 168.9 MB/s (10244 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/reduce.spv: 1 file pushed, 0 skipped. 112.7 MB/s (6480 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/histogram.spv: 1 file pushed, 0 skipped. 219.0 MB/s (13880 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/radix_sort_scan.spv: 1 file pushed, 0 skipped. 54.7 MB/s (4616 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/radix_sort_64.spv: 1 file pushed, 0 skipped. 333.4 MB/s (26768 bytes in 0.000s)
+ppl/vulkan/shaders/compiled_shaders/prefix_sum_64.spv: 1 file pushed, 0 skipped. 266.9 MB/s (18776 bytes in 0.000s)
+[DEBUG] Valid small cores: 0 1 2 3 
+[DEBUG] Valid medium cores: 4 5 6 
+[DEBUG] Valid big cores: 7 
+name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message
+"CPU_Pinned/MortonCode/Small/1/iterations:40",40,30.0926,0.680018,ms,,,,,
+"CPU_Pinned/MortonCode/Small/2/iterations:40",40,15.3269,0.62221,ms,,,,,
+"CPU_Pinned/MortonCode/Small/3/iterations:40",40,9.09741,0.336527,ms,,,,,
+"CPU_Pinned/MortonCode/Small/4/iterations:40",40,7.12698,0.230349,ms,,,,,
+"CPU_Pinned/MortonCode/Medium/1/iterations:40",40,12.3779,0.36813,ms,,,,,
+"CPU_Pinned/MortonCode/Medium/2/iterations:40",40,4.21341,0.199255,ms,,,,,
+"CPU_Pinned/MortonCode/Medium/3/iterations:40",40,2.76266,0.154429,ms,,,,,
+"CPU_Pinned/MortonCode/Big/1/iterations:40",40,5.65525,0.167899,ms,,,,,
+"CPU_Pinned/RadixSort/Small/1/iterations:40",40,62.4479,3.49298,ms,,,,,
+"CPU_Pinned/RadixSort/Small/2/iterations:40",40,35.0722,4.51139,ms,,,,,
+"CPU_Pinned/RadixSort/Small/3/iterations:40",40,13.1125,0.748084,ms,,,,,
+"CPU_Pinned/RadixSort/Small/4/iterations:40",40,9.01217,0.673495,ms,,,,,
+"CPU_Pinned/RadixSort/Medium/1/iterations:40",40,19.8717,1.49103,ms,,,,,
+"CPU_Pinned/RadixSort/Medium/2/iterations:40",40,7.75149,0.453265,ms,,,,,
+"CPU_Pinned/RadixSort/Medium/3/iterations:40",40,3.12277,0.287317,ms,,,,,
+"CPU_Pinned/RadixSort/Big/1/iterations:40",40,5.84648,0.267217,ms,,,,,
+"CPU_Pinned/RemoveDuplicates/Small/1/iterations:40",40,1.10845,1.0906,ms,,,,,
+"CPU_Pinned/RemoveDuplicates/Small/2/iterations:40",40,0.990287,0.967993,ms,,,,,
+"CPU_Pinned/RemoveDuplicates/Small/3/iterations:40",40,0.621899,0.614763,ms,,,,,
+"CPU_Pinned/RemoveDuplicates/Small/4/iterations:40",40,0.623229,0.614072,ms,,,,,
+"CPU_Pinned/RemoveDuplicates/Medium/1/iterations:40",40,0.605514,0.595027,ms,,,,,
+"CPU_Pinned/RemoveDuplicates/Medium/2/iterations:40",40,0.607395,0.600574,ms,,,,,
+"CPU_Pinned/RemoveDuplicates/Medium/3/iterations:40",40,0.614201,0.604605,ms,,,,,
+"CPU_Pinned/RemoveDuplicates/Big/1/iterations:40",40,0.590511,0.58431,ms,,,,,
+"CPU_Pinned/BuildRadixTree/Small/1/iterations:40",40,45.4271,0.900646,ms,,,,,
+"CPU_Pinned/BuildRadixTree/Small/2/iterations:40",40,23.767,1.08513,ms,,,,,
+"CPU_Pinned/BuildRadixTree/Small/3/iterations:40",40,15.0432,0.620408,ms,,,,,
+"CPU_Pinned/BuildRadixTree/Small/4/iterations:40",40,11.6718,0.268578,ms,,,,,
+"CPU_Pinned/BuildRadixTree/Medium/1/iterations:40",40,32.3476,0.441083,ms,,,,,
+"CPU_Pinned/BuildRadixTree/Medium/2/iterations:40",40,11.7235,0.315845,ms,,,,,
+"CPU_Pinned/BuildRadixTree/Medium/3/iterations:40",40,6.72245,0.224356,ms,,,,,
+"CPU_Pinned/BuildRadixTree/Big/1/iterations:40",40,16.4344,0.276192,ms,,,,,
+"CPU_Pinned/EdgeCount/Small/1/iterations:40",40,7.49776,0.803433,ms,,,,,
+"CPU_Pinned/EdgeCount/Small/2/iterations:40",40,2.80639,0.282218,ms,,,,,
+"CPU_Pinned/EdgeCount/Small/3/iterations:40",40,1.49557,0.144928,ms,,,,,
+"CPU_Pinned/EdgeCount/Small/4/iterations:40",40,1.22446,0.14589,ms,,,,,
+"CPU_Pinned/EdgeCount/Medium/1/iterations:40",40,7.90501,0.420028,ms,,,,,
+"CPU_Pinned/EdgeCount/Medium/2/iterations:40",40,3.32347,0.162761,ms,,,,,
+"CPU_Pinned/EdgeCount/Medium/3/iterations:40",40,1.47329,0.0833633,ms,,,,,
+"CPU_Pinned/EdgeCount/Big/1/iterations:40",40,5.37276,0.289417,ms,,,,,
+"CPU_Pinned/EdgeOffset/Small/1/iterations:40",40,1.44939,0.236254,ms,,,,,
+"CPU_Pinned/EdgeOffset/Small/2/iterations:40",40,1.06001,0.0842069,ms,,,,,
+"CPU_Pinned/EdgeOffset/Small/3/iterations:40",40,0.934231,0.0825001,ms,,,,,
+"CPU_Pinned/EdgeOffset/Small/4/iterations:40",40,1.03719,0.110433,ms,,,,,
+"CPU_Pinned/EdgeOffset/Medium/1/iterations:40",40,1.02787,0.102675,ms,,,,,
+"CPU_Pinned/EdgeOffset/Medium/2/iterations:40",40,0.777047,0.0584032,ms,,,,,
+"CPU_Pinned/EdgeOffset/Medium/3/iterations:40",40,0.756928,0.0501612,ms,,,,,
+"CPU_Pinned/EdgeOffset/Big/1/iterations:40",40,0.94975,0.0589854,ms,,,,,
+"CPU_Pinned/BuildOctree/Small/1/iterations:40",40,64.3656,1.48516,ms,,,,,
+"CPU_Pinned/BuildOctree/Small/2/iterations:40",40,31.57,1.41644,ms,,,,,
+"CPU_Pinned/BuildOctree/Small/3/iterations:40",40,20.1702,0.95429,ms,,,,,
+"CPU_Pinned/BuildOctree/Small/4/iterations:40",40,15.2262,0.482635,ms,,,,,
+"CPU_Pinned/BuildOctree/Medium/1/iterations:40",40,38.8565,0.655374,ms,,,,,
+"CPU_Pinned/BuildOctree/Medium/2/iterations:40",40,11.7522,0.374295,ms,,,,,
+"CPU_Pinned/BuildOctree/Medium/3/iterations:40",40,7.9099,0.367793,ms,,,,,
+"CPU_Pinned/BuildOctree/Big/1/iterations:40",40,15.3874,0.396045,ms,,,,,
+
