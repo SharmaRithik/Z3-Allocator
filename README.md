@@ -42,18 +42,24 @@ Provides detailed execution analysis including:
 
 ```bash
 python3 Z3-Allocator.py <cpu_benchmark_file> <gpu_benchmark_file>
+python3 Alpha-Z3-Allocator.py <cpu_benchmark_file> <gpu_benchmark_file>
+python3 Beta-Z3-Allocator.py <cpu_benchmark_file> <gpu_benchmark_file>
 ```
 
 ### For Android:
 
 ```bash
 python3 Z3-Allocator.py android_tree_cpu.csv android_tree_vk.csv
+python3 Alpha-Z3-Allocator.py android_cifar_dense_cpu.csv android_cifar_dense_vk.csv
+python3 Beta-Z3-Allocator.py android_cifar_sparse_cpu.csv android_cifar_sparse_vk.csv
 ```
 
 ### For Jetson:
 
 ```bash
 python3 Z3-Allocator.py jetson_tree_cpu.csv jetson_tree_cuda.csv
+jetson_cifar_dense_cpu.csv coming soon
+jetson_cifar_sparse_cpu.csv coming soon
 ```
 
 ---
