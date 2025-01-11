@@ -58,7 +58,6 @@ def parse_benchmark_file(file_path):
     return pd.DataFrame(device_data, columns=['Device_ID', 'Category', 'Task', 'Core_Type', 
                                             'Core_Count', 'Iterations', 'Real_Time', 
                                             'CPU_Time', 'Time_Unit'])
-
 def solve_task_allocation(device_df, tasks, core_configs, task_dependencies, pipeline_sequence, num_pipelines, transfer_penalty=1.2):
     solver = Optimize()
     
@@ -78,23 +77,49 @@ def solve_task_allocation(device_df, tasks, core_configs, task_dependencies, pip
                             for count in counts])
         solver.add(assignment_sum == 1)
     
-    # Track core utilization
-    core_utilization = {}
-    for core_type, counts in core_configs.items():
-        max_cores = max(counts)
-        core_utilization[core_type] = Real(f'util_{core_type}')
-        
-        util_expr = Sum([
-            task_vars[f"{task}_{core_type}_{count}"] * (count / max_cores)
-            for task in pipeline_sequence
-            for count in counts
-        ]) / len(pipeline_sequence)
-        
-        solver.add(core_utilization[core_type] >= 0)
-        solver.add(core_utilization[core_type] <= 1)
-        solver.add(core_utilization[core_type] == util_expr)
+    # Track which core type is used at each position
+    position_core_type = {}
+    for pos, task in enumerate(pipeline_sequence):
+        for core_type in core_configs.keys():
+            var_name = f"{pos}_{core_type}"
+            position_core_type[var_name] = Bool(var_name)
+            # Link to task assignments
+            solver.add(position_core_type[var_name] == 
+                      Or([task_vars[f"{task}_{core_type}_{count}"] == 1 
+                          for count in core_configs[core_type]]))
     
-    # Calculate base execution times for tasks
+    # Track core types that have been used up to each position
+    core_used_before = {}
+    for core_type in core_configs.keys():
+        for pos in range(len(pipeline_sequence)):
+            var_name = f"used_before_{core_type}_{pos}"
+            core_used_before[var_name] = Bool(var_name)
+            
+            if pos == 0:
+                # For first position, used_before is false
+                solver.add(core_used_before[var_name] == False)
+            else:
+                # For other positions, core is used before if it was used before previous position
+                # or was used in the previous position
+                solver.add(core_used_before[var_name] == 
+                         Or(core_used_before[f"used_before_{core_type}_{pos-1}"],
+                            position_core_type[f"{pos-1}_{core_type}"]))
+    
+    # Prevent using a core type if it was used before but not in the immediately previous position
+    for pos in range(1, len(pipeline_sequence)):
+        for core_type in core_configs.keys():
+            current_use = position_core_type[f"{pos}_{core_type}"]
+            prev_use = position_core_type[f"{pos-1}_{core_type}"]
+            used_before = core_used_before[f"used_before_{core_type}_{pos}"]
+            
+            # If we use this core type at this position:
+            # Either it must have been used in the previous position
+            # Or it must have never been used before
+            solver.add(Implies(current_use,
+                             Or(prev_use,
+                                Not(used_before))))
+    
+    # Calculate task execution times
     task_times = {}
     for task in pipeline_sequence:
         task_times[task] = Real(f'time_{task}')
@@ -108,93 +133,28 @@ def solve_task_allocation(device_df, tasks, core_configs, task_dependencies, pip
         ])
         solver.add(task_times[task] == time_expr)
     
-    # Create timing variables for each task instance
+    # Create timing variables for first pipeline instance
     start_times = {}
     end_times = {}
     
-    # Calculate the theoretical minimum time between iterations (critical path)
-    critical_path_time = Real('critical_path_time')
-    solver.add(critical_path_time == Sum([task_times[task] for task in pipeline_sequence]))
+    # Initialize timing for first pipeline
+    prev_end_time = Real('start')
+    solver.add(prev_end_time == 0)
     
-    # Initialize timing variables for all pipeline instances
-    for pipeline_idx in range(num_pipelines):
-        for task in pipeline_sequence:
-            start_key = f"{task}_{pipeline_idx}"
-            start_times[start_key] = Real(start_key)
-            end_times[start_key] = Real(f"end_{start_key}")
-            
-            # Basic timing constraint: end time = start time + execution time
-            solver.add(end_times[start_key] == start_times[start_key] + task_times[task])
-    
-    # Add dependency constraints between tasks within the same pipeline
-    for pipeline_idx in range(num_pipelines):
-        for i, task in enumerate(pipeline_sequence):
-            if i > 0:
-                prev_task = pipeline_sequence[i-1]
-                solver.add(start_times[f"{task}_{pipeline_idx}"] >= 
-                          end_times[f"{prev_task}_{pipeline_idx}"])
-    
-    # Add pipeline overlap constraints with minimum offset
-    min_pipeline_offset = Real('min_pipeline_offset')
-    solver.add(min_pipeline_offset >= 0)
-    
-    for pipeline_idx in range(1, num_pipelines):
-        # Each pipeline instance can start after a minimum offset from the previous instance
-        solver.add(start_times[f"{pipeline_sequence[0]}_{pipeline_idx}"] >= 
-                  start_times[f"{pipeline_sequence[0]}_{pipeline_idx-1}"] + min_pipeline_offset)
-    
-    # Create variables to track core type assignments
-    core_type_vars = {}
     for task in pipeline_sequence:
-        for core_type in core_configs.keys():
-            var_name = f"{task}_{core_type}_used"
-            core_type_vars[var_name] = Bool(var_name)
-            
-            # Link core type usage to task assignments
-            solver.add(core_type_vars[var_name] == 
-                      Or([task_vars[f"{task}_{core_type}_{count}"] == 1 
-                          for count in core_configs[core_type]]))
+        start_times[task] = Real(f'start_{task}')
+        end_times[task] = Real(f'end_{task}')
+        
+        solver.add(start_times[task] >= prev_end_time)
+        solver.add(end_times[task] == start_times[task] + task_times[task])
+        prev_end_time = end_times[task]
     
-    # Prevent resource conflicts between pipeline instances
-    for pipeline_idx in range(num_pipelines):
-        for next_idx in range(pipeline_idx + 1, num_pipelines):
-            for task1 in pipeline_sequence:
-                for task2 in pipeline_sequence:
-                    for core_type in core_configs.keys():
-                        # If both tasks use the same core type, they can't overlap
-                        solver.add(Implies(
-                            And(core_type_vars[f"{task1}_{core_type}_used"],
-                                core_type_vars[f"{task2}_{core_type}_used"]),
-                            Or(
-                                end_times[f"{task1}_{pipeline_idx}"] <= start_times[f"{task2}_{next_idx}"],
-                                end_times[f"{task2}_{next_idx}"] <= start_times[f"{task1}_{pipeline_idx}"]
-                            )
-                        ))
-    
-    # Calculate total pipeline time using Z3's maximum function
-    last_end_times = [end_times[f"{task}_{num_pipelines-1}"] for task in pipeline_sequence]
-    first_start_times = [start_times[f"{task}_0"] for task in pipeline_sequence]
-    
+    # Calculate total time
     total_time = Real('total_time')
+    solver.add(total_time == prev_end_time)  # Last end time
     
-    # Create constraints for maximum end time and minimum start time
-    max_end_time = last_end_times[0]
-    min_start_time = first_start_times[0]
-    
-    for i in range(1, len(pipeline_sequence)):
-        max_end_time = If(last_end_times[i] > max_end_time, last_end_times[i], max_end_time)
-        min_start_time = If(first_start_times[i] < min_start_time, first_start_times[i], min_start_time)
-    
-    solver.add(total_time == max_end_time - min_start_time)
-    
-    # Calculate average core utilization
-    avg_utilization = Real('avg_utilization')
-    solver.add(avg_utilization == Sum([core_utilization[core_type] 
-                                     for core_type in core_configs.keys()]) / len(core_configs))
-    
-    # Multi-objective optimization
-    optimization_objective = total_time + (1 - avg_utilization) * total_time * 0.5
-    solver.minimize(optimization_objective)
+    # Minimize total execution time
+    solver.minimize(total_time)
     
     if solver.check() == sat:
         model = solver.model()
@@ -210,44 +170,50 @@ def solve_task_allocation(device_df, tasks, core_configs, task_dependencies, pip
             'start_times': {},
             'end_times': {},
             'total_time': safe_float(model[total_time].as_decimal(6)),
-            'critical_path_time': safe_float(model[critical_path_time].as_decimal(6)),
-            'min_pipeline_offset': safe_float(model[min_pipeline_offset].as_decimal(6)),
             'num_pipelines': num_pipelines,
             'pipeline_sequence': pipeline_sequence,
             'core_execution_times': {},
             'core_utilization': {}
         }
         
-        # Store core utilization
-        for core_type in core_configs.keys():
-            solution['core_utilization'][core_type] = safe_float(model[core_utilization[core_type]].as_decimal(6))
-        
-        # Store task assignments and timing information
+        # Get base assignments and execution times
+        base_assignments = {}
+        base_times = {}
         for task in pipeline_sequence:
             for core_type, counts in core_configs.items():
                 for count in counts:
                     var_name = f"{task}_{core_type}_{count}"
                     if model[task_vars[var_name]].as_long() == 1:
-                        exec_time = safe_float(model[task_times[task]].as_decimal(6))
-                        for pipeline_idx in range(num_pipelines):
-                            solution['assignments'][(task, pipeline_idx)] = (core_type, count)
-                            solution['execution_times'][(task, pipeline_idx)] = exec_time
-                            
-                            start_key = f"{task}_{pipeline_idx}"
-                            solution['start_times'][(task, pipeline_idx)] = safe_float(model[start_times[start_key]].as_decimal(6))
-                            solution['end_times'][(task, pipeline_idx)] = safe_float(model[end_times[start_key]].as_decimal(6))
+                        base_assignments[task] = (core_type, count)
+                        base_times[task] = safe_float(model[task_times[task]].as_decimal(6))
+                        break
         
-        # Calculate core execution times
+        # Store assignments and timing for all pipeline instances
+        for pipeline_idx in range(num_pipelines):
+            for task in pipeline_sequence:
+                solution['assignments'][(task, pipeline_idx)] = base_assignments[task]
+                solution['execution_times'][(task, pipeline_idx)] = base_times[task]
+                
+                if pipeline_idx == 0:
+                    solution['start_times'][(task, pipeline_idx)] = safe_float(model[start_times[task]].as_decimal(6))
+                    solution['end_times'][(task, pipeline_idx)] = safe_float(model[end_times[task]].as_decimal(6))
+                else:
+                    # For subsequent instances, add appropriate offset
+                    offset = solution['total_time'] * pipeline_idx / num_pipelines
+                    solution['start_times'][(task, pipeline_idx)] = solution['start_times'][(task, 0)] + offset
+                    solution['end_times'][(task, pipeline_idx)] = solution['end_times'][(task, 0)] + offset
+        
+        # Calculate core execution times and utilization
         for core_type in core_configs.keys():
-            total_core_time = sum(solution['execution_times'][(task, 0)]
+            total_core_time = sum(base_times[task]
                                 for task in pipeline_sequence
-                                if solution['assignments'][(task, 0)][0] == core_type)
+                                if base_assignments[task][0] == core_type)
             solution['core_execution_times'][core_type] = total_core_time
+            solution['core_utilization'][core_type] = total_core_time / solution['total_time']
         
         return solution
     else:
         return None
-
 def main():
     # Define the fixed pipeline sequence
     pipeline_sequence = [
@@ -308,20 +274,42 @@ def main():
 
         if solution:
             print("\nPipeline Metrics:")
-            print(f"Critical Path Time: {solution['critical_path_time']:.6f} ms")
-            print(f"Minimum Pipeline Offset: {solution['min_pipeline_offset']:.6f} ms")
+            # Calculate single pipeline time from first instance
+            first_pipeline_start = min(solution['start_times'][(task, 0)] 
+                                     for task in pipeline_sequence)
+            first_pipeline_end = max(solution['end_times'][(task, 0)] 
+                                   for task in pipeline_sequence)
+            single_pipeline_time = first_pipeline_end - first_pipeline_start
+            
+            print(f"Single Pipeline Time: {single_pipeline_time:.6f} ms")
             print(f"Total Time for {num_pipelines} iterations: {solution['total_time']:.6f} ms")
             print(f"Effective throughput: {num_pipelines / solution['total_time']:.6f} iterations/ms")
             
-            print("\nTask Overlap Analysis:")
-            all_times = []
+            print("\nCore Utilization:")
+            for core_type, utilization in solution['core_utilization'].items():
+                print(f"{core_type}: {utilization*100:.2f}%")
+            
+            print("\nTask Assignments and Timing:")
             for pipeline_idx in range(num_pipelines):
+                print(f"\nPipeline Instance {pipeline_idx + 1}:")
                 pipeline_start = min(solution['start_times'][(task, pipeline_idx)] 
                                    for task in pipeline_sequence)
                 pipeline_end = max(solution['end_times'][(task, pipeline_idx)] 
                                  for task in pipeline_sequence)
-                all_times.append((pipeline_start, pipeline_end))
-                print(f"Pipeline {pipeline_idx + 1}: {pipeline_start:.6f} -> {pipeline_end:.6f} ms")
+                
+                print(f"Pipeline start: {pipeline_start:.6f} ms, end: {pipeline_end:.6f} ms")
+                print("-" * 40)
+                
+                for task in pipeline_sequence:
+                    core_type, count = solution['assignments'][(task, pipeline_idx)]
+                    start_time = solution['start_times'][(task, pipeline_idx)]
+                    end_time = solution['end_times'][(task, pipeline_idx)]
+                    exec_time = solution['execution_times'][(task, pipeline_idx)]
+                    
+                    print(f"{task:<20} -> {core_type} [{count}] "
+                          f"(Start: {start_time:.6f} ms, "
+                          f"Exec: {exec_time:.6f} ms, "
+                          f"End: {end_time:.6f} ms)")
 
             # Print core type transitions
             print("\nCore Type Transitions:")
@@ -337,7 +325,6 @@ def main():
                         prev_core_type = curr_core_type
 
             print(f"\nTotal Core Type Transitions: {transitions}")
-            print(f"Total Pipeline Time: {solution['total_time']:.6f} ms")
 
             # Print task distribution by core type
             print("\nTask Distribution by Core Type:")
@@ -358,6 +345,10 @@ def main():
                 for core_type in core_configs.keys():
                     tasks_str = ', '.join(core_type_tasks[core_type]) if core_type_tasks[core_type] else "No tasks assigned"
                     print(f"{core_type} cores: {tasks_str}")
+
+            print("\nCore Execution Times:")
+            for core_type, time in solution['core_execution_times'].items():
+                print(f"{core_type}: {time:.6f} ms")
         else:
             print("No feasible solution found!")
             print("Please check task names and ensure all dependencies exist in benchmark data.")
