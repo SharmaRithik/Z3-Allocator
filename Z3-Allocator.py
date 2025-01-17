@@ -165,8 +165,12 @@ def parse_benchmark_files(cpu_file_path, gpu_file_path):
     return df, device_configs
 
 def solve_task_allocation(device_df, tasks, core_configs, task_dependencies, pipeline_sequence, num_pipelines, transfer_penalty=1.2):
-    """Solve task allocation with GPU support."""
+    """Solve task allocation with GPU support and maximum core count enforcement."""
     solver = Optimize()
+    
+    # Helper function to get max core count for a core type
+    def get_max_core_count(core_type):
+        return max(core_configs[core_type]['counts'])
     
     # Create task assignment variables using core counts
     task_vars = {}
@@ -177,8 +181,27 @@ def solve_task_allocation(device_df, tasks, core_configs, task_dependencies, pip
                 task_vars[var_name] = Int(var_name)
                 solver.add(Or(task_vars[var_name] == 0, task_vars[var_name] == 1))
     
-    # Ensure exactly one assignment per task
+    # Ensure exactly one assignment per task and enforce maximum core usage
     for task in pipeline_sequence:
+        # Create variables to track if each core type is used for this task
+        core_type_used = {}
+        for core_type in core_configs.keys():
+            var_name = f"{task}_{core_type}_used"
+            core_type_used[core_type] = Bool(var_name)
+            
+            # Define when a core type is considered "used"
+            solver.add(core_type_used[core_type] == 
+                      Or([task_vars[f"{task}_{core_type}_{count}"] == 1 
+                         for count in core_configs[core_type]['counts']]))
+            
+            # If this core type is used, enforce using maximum core count
+            max_count = get_max_core_count(core_type)
+            solver.add(Implies(core_type_used[core_type],
+                             And([task_vars[f"{task}_{core_type}_{count}"] == 0 
+                                 for count in core_configs[core_type]['counts']
+                                 if count != max_count])))
+        
+        # Ensure exactly one assignment per task
         assignment_sum = Sum([task_vars[f"{task}_{core_type}_{count}"]
                             for core_type, config in core_configs.items()
                             for count in config['counts']])
@@ -262,15 +285,6 @@ def solve_task_allocation(device_df, tasks, core_configs, task_dependencies, pip
                 else:
                     print(f"Warning: No execution time data found for {task} on {core_type} with {count} cores")
 
-    # Ensure we have at least one valid configuration for each task
-    for task in pipeline_sequence:
-        valid_configs = [(core_type, count) for core_type, config in core_configs.items()
-                        for count in config['counts']
-                        if (task, core_type, count) in task_exec_times]
-        if not valid_configs:
-            print(f"Error: No valid configuration found for task {task}")
-            return None
-    
     # Calculate core type total execution times
     core_total_times = {}
     for core_type in core_configs.keys():
@@ -291,12 +305,11 @@ def solve_task_allocation(device_df, tasks, core_configs, task_dependencies, pip
     for core_type in core_configs.keys():
         solver.add_soft(core_total_times[core_type] <= ideal_time_per_core * 1.2, weight=100)
         solver.add_soft(core_total_times[core_type] >= ideal_time_per_core * 0.8, weight=100)
-    
-    # Calculate task times and dependencies
+        # Calculate task times and dependencies
     task_times = {}
     start_times = {}
     end_times = {}
-    
+
     for pipeline_idx in range(num_pipelines):
         for task in pipeline_sequence:
             if task not in task_times:
@@ -308,14 +321,14 @@ def solve_task_allocation(device_df, tasks, core_configs, task_dependencies, pip
                     if (task, core_type, count) in task_exec_times
                 ])
                 solver.add(task_times[task] == time_expr)
-            
+
             start_times[f"{task}_{pipeline_idx}"] = Real(f'start_{task}_{pipeline_idx}')
             end_times[f"{task}_{pipeline_idx}"] = Real(f'end_{task}_{pipeline_idx}')
             solver.add(start_times[f"{task}_{pipeline_idx}"] >= 0)
             solver.add(end_times[f"{task}_{pipeline_idx}"] ==
                       start_times[f"{task}_{pipeline_idx}"] +
                       task_times[task])
-    
+
     # Enforce pipeline sequence dependencies
     for pipeline_idx in range(num_pipelines):
         for i in range(len(pipeline_sequence) - 1):
@@ -323,22 +336,22 @@ def solve_task_allocation(device_df, tasks, core_configs, task_dependencies, pip
             next_task = pipeline_sequence[i + 1]
             solver.add(start_times[f"{next_task}_{pipeline_idx}"] >=
                       end_times[f"{current_task}_{pipeline_idx}"])
-    
+
     # Enforce task dependencies across pipelines
     for task_idx, task in enumerate(pipeline_sequence):
         for pipeline_idx in range(num_pipelines - 1):
             solver.add(start_times[f"{task}_{pipeline_idx + 1}"] >=
                       end_times[f"{task}_{pipeline_idx}"])
-    
+
     # Calculate total pipeline time
     total_time = Real('total_time')
     for pipeline_idx in range(num_pipelines):
         for task in pipeline_sequence:
             solver.add(total_time >= end_times[f"{task}_{pipeline_idx}"])
-    
+
     # Minimize total time
     solver.minimize(total_time)
-    
+
     if solver.check() == sat:
         model = solver.model()
         def safe_float(decimal_str):
@@ -346,7 +359,7 @@ def solve_task_allocation(device_df, tasks, core_configs, task_dependencies, pip
                 return float(str(decimal_str).replace('?', ''))
             except (ValueError, TypeError):
                 return 0.0
-        
+
         solution = {
             'assignments': {},
             'execution_times': {},
@@ -358,7 +371,7 @@ def solve_task_allocation(device_df, tasks, core_configs, task_dependencies, pip
             'core_execution_times': {core_type: safe_float(model[core_total_times[core_type]].as_decimal(6))
                                    for core_type in core_configs.keys()}
         }
-        
+
         for task in pipeline_sequence:
             for core_type, config in core_configs.items():
                 for count in config['counts']:
@@ -368,13 +381,13 @@ def solve_task_allocation(device_df, tasks, core_configs, task_dependencies, pip
                             solution['assignments'][(task, pipeline_idx)] = (core_type, count)
                             exec_time = safe_float(model[task_times[task]].as_decimal(6))
                             solution['execution_times'][(task, pipeline_idx)] = exec_time
-        
+
         for pipeline_idx in range(num_pipelines):
             for task in pipeline_sequence:
                 task_key = f"{task}_{pipeline_idx}"
                 solution['start_times'][(task, pipeline_idx)] = safe_float(model[start_times[task_key]].as_decimal(6))
                 solution['end_times'][(task, pipeline_idx)] = safe_float(model[end_times[task_key]].as_decimal(6))
-        
+
         return solution
     else:
         return None
@@ -425,14 +438,14 @@ def main():
     # Process each device
     for device_id, device_df in df.groupby('Device_ID'):
         print(f"\nResults for Device: {device_id}")
-        
+
         if device_id in device_configs:
             print("\nCore Configuration:")
             for core_type, config in device_configs[device_id].items():
                 print(f"{core_type.capitalize()} cores: {config['cores']} (Available counts: {config['counts']})")
-        
+
         print("\nCalculating optimal task allocation with CPU and GPU support...")
-        
+
         # Use the device-specific core configuration
         core_configs = device_configs[device_id]
 
