@@ -134,66 +134,66 @@ Pipeline Instance 1:
 ----------------------------------------
 run_stage1           -> medium [2 cores] (Start: 0.000000 ms, Exec: 1.473960 ms, End: 1.473960 ms)
 run_stage2           -> big [2 cores] (Start: 1.473960 ms, Exec: 2.220110 ms, End: 3.694070 ms)
-run_stage3           -> big [1 cores] (Start: 3.694070 ms, Exec: 0.331901 ms, End: 4.025971 ms)
-run_stage4           -> gpu [1 cores] (Start: 4.025971 ms, Exec: 1.490740 ms, End: 5.516711 ms)
-run_stage5           -> small [4 cores] (Start: 5.516711 ms, Exec: 0.845846 ms, End: 6.362557 ms)
-run_stage6           -> small [4 cores] (Start: 6.362557 ms, Exec: 0.220950 ms, End: 6.583507 ms)
-run_stage7           -> small [4 cores] (Start: 6.583507 ms, Exec: 0.503149 ms, End: 7.086656 ms)
+run_stage3           -> big [2 cores] (Start: 3.694070 ms, Exec: 0.335994 ms, End: 4.030064 ms)
+run_stage4           -> gpu [1 cores] (Start: 4.030064 ms, Exec: 1.490740 ms, End: 5.520804 ms)
+run_stage5           -> small [4 cores] (Start: 5.520804 ms, Exec: 0.845846 ms, End: 6.366650 ms)
+run_stage6           -> small [4 cores] (Start: 6.366650 ms, Exec: 0.220950 ms, End: 6.587600 ms)
+run_stage7           -> small [4 cores] (Start: 6.587600 ms, Exec: 0.503149 ms, End: 7.090749 ms)
 
-Pipeline Instance 1 Total Time: 7.086656 ms
-(Start: 0.000000 ms, End: 7.086656 ms)
+Pipeline Instance 1 Total Time: 7.090749 ms
+(Start: 0.000000 ms, End: 7.090749 ms)
 
 Pipeline Instance 2:
 ----------------------------------------
 run_stage1           -> medium [2 cores] (Start: 1.473960 ms, Exec: 1.473960 ms, End: 2.947920 ms)
 run_stage2           -> big [2 cores] (Start: 3.694070 ms, Exec: 2.220110 ms, End: 5.914180 ms)
-run_stage3           -> big [1 cores] (Start: 5.914180 ms, Exec: 0.331901 ms, End: 6.246081 ms)
-run_stage4           -> gpu [1 cores] (Start: 6.246081 ms, Exec: 1.490740 ms, End: 7.736821 ms)
-run_stage5           -> small [4 cores] (Start: 7.736821 ms, Exec: 0.845846 ms, End: 8.582667 ms)
-run_stage6           -> small [4 cores] (Start: 8.582667 ms, Exec: 0.220950 ms, End: 8.803617 ms)
-run_stage7           -> small [4 cores] (Start: 8.803617 ms, Exec: 0.503149 ms, End: 9.306766 ms)
+run_stage3           -> big [2 cores] (Start: 5.914180 ms, Exec: 0.335994 ms, End: 6.250174 ms)
+run_stage4           -> gpu [1 cores] (Start: 6.250174 ms, Exec: 1.490740 ms, End: 7.740914 ms)
+run_stage5           -> small [4 cores] (Start: 7.740914 ms, Exec: 0.845846 ms, End: 8.586760 ms)
+run_stage6           -> small [4 cores] (Start: 8.586760 ms, Exec: 0.220950 ms, End: 8.807710 ms)
+run_stage7           -> small [4 cores] (Start: 8.807710 ms, Exec: 0.503149 ms, End: 9.310859 ms)
 
-Pipeline Instance 2 Total Time: 7.832806 ms
-(Start: 1.473960 ms, End: 9.306766 ms)
+Pipeline Instance 2 Total Time: 7.836899 ms
+(Start: 1.473960 ms, End: 9.310859 ms)
 
 Pipeline Instance 3:
 ----------------------------------------
-run_stage1           -> medium [2 cores] (Start: 4.440220 ms, Exec: 1.473960 ms, End: 5.914180 ms)
+run_stage1           -> medium [2 cores] (Start: 2.947920 ms, Exec: 1.473960 ms, End: 4.421880 ms)
 run_stage2           -> big [2 cores] (Start: 5.914180 ms, Exec: 2.220110 ms, End: 8.134290 ms)
-run_stage3           -> big [1 cores] (Start: 8.134290 ms, Exec: 0.331901 ms, End: 8.466191 ms)
-run_stage4           -> gpu [1 cores] (Start: 8.466191 ms, Exec: 1.490740 ms, End: 9.956931 ms)
-run_stage5           -> small [4 cores] (Start: 9.956931 ms, Exec: 0.845846 ms, End: 10.802777 ms)
-run_stage6           -> small [4 cores] (Start: 10.802777 ms, Exec: 0.220950 ms, End: 11.023727 ms)
-run_stage7           -> small [4 cores] (Start: 11.023727 ms, Exec: 0.503149 ms, End: 11.526876 ms)
+run_stage3           -> big [2 cores] (Start: 8.134290 ms, Exec: 0.335994 ms, End: 8.470284 ms)
+run_stage4           -> gpu [1 cores] (Start: 8.470284 ms, Exec: 1.490740 ms, End: 9.961024 ms)
+run_stage5           -> small [4 cores] (Start: 9.961024 ms, Exec: 0.845846 ms, End: 10.806870 ms)
+run_stage6           -> small [4 cores] (Start: 10.806870 ms, Exec: 0.220950 ms, End: 11.027820 ms)
+run_stage7           -> small [4 cores] (Start: 11.027820 ms, Exec: 0.503149 ms, End: 11.530969 ms)
 
-Pipeline Instance 3 Total Time: 7.086656 ms
-(Start: 4.440220 ms, End: 11.526876 ms)
+Pipeline Instance 3 Total Time: 8.583049 ms
+(Start: 2.947920 ms, End: 11.530969 ms)
 
 Pipeline Instance 4:
 ----------------------------------------
-run_stage1           -> medium [2 cores] (Start: 6.660330 ms, Exec: 1.473960 ms, End: 8.134290 ms)
+run_stage1           -> medium [2 cores] (Start: 4.421880 ms, Exec: 1.473960 ms, End: 5.895840 ms)
 run_stage2           -> big [2 cores] (Start: 8.134290 ms, Exec: 2.220110 ms, End: 10.354400 ms)
-run_stage3           -> big [1 cores] (Start: 11.083770 ms, Exec: 0.331901 ms, End: 11.415671 ms)
-run_stage4           -> gpu [1 cores] (Start: 11.415671 ms, Exec: 1.490740 ms, End: 12.906411 ms)
-run_stage5           -> small [4 cores] (Start: 13.551305 ms, Exec: 0.845846 ms, End: 14.397151 ms)
-run_stage6           -> small [4 cores] (Start: 14.739848 ms, Exec: 0.220950 ms, End: 14.960798 ms)
-run_stage7           -> small [4 cores] (Start: 14.960798 ms, Exec: 0.503149 ms, End: 15.463947 ms)
+run_stage3           -> big [2 cores] (Start: 10.354400 ms, Exec: 0.335994 ms, End: 10.690394 ms)
+run_stage4           -> gpu [1 cores] (Start: 10.690394 ms, Exec: 1.490740 ms, End: 12.181134 ms)
+run_stage5           -> small [4 cores] (Start: 12.181134 ms, Exec: 0.845846 ms, End: 13.026980 ms)
+run_stage6           -> small [4 cores] (Start: 13.026980 ms, Exec: 0.220950 ms, End: 13.247930 ms)
+run_stage7           -> small [4 cores] (Start: 13.247930 ms, Exec: 0.503149 ms, End: 13.751079 ms)
 
-Pipeline Instance 4 Total Time: 8.803617 ms
-(Start: 6.660330 ms, End: 15.463947 ms)
+Pipeline Instance 4 Total Time: 9.329199 ms
+(Start: 4.421880 ms, End: 13.751079 ms)
 
 Pipeline Instance 5:
 ----------------------------------------
-run_stage1           -> medium [2 cores] (Start: 8.880440 ms, Exec: 1.473960 ms, End: 10.354400 ms)
+run_stage1           -> medium [2 cores] (Start: 5.895840 ms, Exec: 1.473960 ms, End: 7.369800 ms)
 run_stage2           -> big [2 cores] (Start: 10.354400 ms, Exec: 2.220110 ms, End: 12.574510 ms)
-run_stage3           -> big [1 cores] (Start: 12.574510 ms, Exec: 0.331901 ms, End: 12.906411 ms)
-run_stage4           -> gpu [1 cores] (Start: 12.906411 ms, Exec: 1.490740 ms, End: 14.397151 ms)
-run_stage5           -> small [4 cores] (Start: 14.397151 ms, Exec: 0.845846 ms, End: 15.242997 ms)
-run_stage6           -> small [4 cores] (Start: 15.242997 ms, Exec: 0.220950 ms, End: 15.463947 ms)
-run_stage7           -> small [4 cores] (Start: 15.463947 ms, Exec: 0.503149 ms, End: 15.967096 ms)
+run_stage3           -> big [2 cores] (Start: 12.574510 ms, Exec: 0.335994 ms, End: 12.910504 ms)
+run_stage4           -> gpu [1 cores] (Start: 12.910504 ms, Exec: 1.490740 ms, End: 14.401244 ms)
+run_stage5           -> small [4 cores] (Start: 14.401244 ms, Exec: 0.845846 ms, End: 15.247090 ms)
+run_stage6           -> small [4 cores] (Start: 15.247090 ms, Exec: 0.220950 ms, End: 15.468040 ms)
+run_stage7           -> small [4 cores] (Start: 15.468040 ms, Exec: 0.503149 ms, End: 15.971189 ms)
 
-Pipeline Instance 5 Total Time: 7.086656 ms
-(Start: 8.880440 ms, End: 15.967096 ms)
+Pipeline Instance 5 Total Time: 10.075349 ms
+(Start: 5.895840 ms, End: 15.971189 ms)
 
 Core Type Transitions:
 Pipeline 1: medium -> big at run_stage2
@@ -213,38 +213,38 @@ Pipeline 5: big -> gpu at run_stage4
 Pipeline 5: gpu -> small at run_stage5
 
 Total Core Type Transitions: 15
-Total Pipeline Time: 15.967096 ms
+Total Pipeline Time: 15.971189 ms
 
 Task Distribution by Core Type:
 
 Pipeline Instance 1:
 small cores: run_stage5 (4 cores), run_stage6 (4 cores), run_stage7 (4 cores)
 medium cores: run_stage1 (2 cores)
-big cores: run_stage2 (2 cores), run_stage3 (1 cores)
+big cores: run_stage2 (2 cores), run_stage3 (2 cores)
 gpu cores: run_stage4 (1 cores)
 
 Pipeline Instance 2:
 small cores: run_stage5 (4 cores), run_stage6 (4 cores), run_stage7 (4 cores)
 medium cores: run_stage1 (2 cores)
-big cores: run_stage2 (2 cores), run_stage3 (1 cores)
+big cores: run_stage2 (2 cores), run_stage3 (2 cores)
 gpu cores: run_stage4 (1 cores)
 
 Pipeline Instance 3:
 small cores: run_stage5 (4 cores), run_stage6 (4 cores), run_stage7 (4 cores)
 medium cores: run_stage1 (2 cores)
-big cores: run_stage2 (2 cores), run_stage3 (1 cores)
+big cores: run_stage2 (2 cores), run_stage3 (2 cores)
 gpu cores: run_stage4 (1 cores)
 
 Pipeline Instance 4:
 small cores: run_stage5 (4 cores), run_stage6 (4 cores), run_stage7 (4 cores)
 medium cores: run_stage1 (2 cores)
-big cores: run_stage2 (2 cores), run_stage3 (1 cores)
+big cores: run_stage2 (2 cores), run_stage3 (2 cores)
 gpu cores: run_stage4 (1 cores)
 
 Pipeline Instance 5:
 small cores: run_stage5 (4 cores), run_stage6 (4 cores), run_stage7 (4 cores)
 medium cores: run_stage1 (2 cores)
-big cores: run_stage2 (2 cores), run_stage3 (1 cores)
+big cores: run_stage2 (2 cores), run_stage3 (2 cores)
 gpu cores: run_stage4 (1 cores)
 
 ================================================================================
@@ -280,66 +280,66 @@ Pipeline Instance 1:
 ----------------------------------------
 run_stage1           -> gpu [1 cores] (Start: 0.000000 ms, Exec: 1.644090 ms, End: 1.644090 ms)
 run_stage2           -> gpu [1 cores] (Start: 1.644090 ms, Exec: 3.466720 ms, End: 5.110810 ms)
-run_stage3           -> small [3 cores] (Start: 5.110810 ms, Exec: 0.291877 ms, End: 5.402687 ms)
-run_stage4           -> small [6 cores] (Start: 5.402687 ms, Exec: 3.078340 ms, End: 8.481027 ms)
-run_stage5           -> small [6 cores] (Start: 8.481027 ms, Exec: 0.286578 ms, End: 8.767605 ms)
-run_stage6           -> small [5 cores] (Start: 8.767605 ms, Exec: 0.138580 ms, End: 8.906185 ms)
-run_stage7           -> small [6 cores] (Start: 8.906185 ms, Exec: 0.197198 ms, End: 9.103383 ms)
+run_stage3           -> small [6 cores] (Start: 5.110810 ms, Exec: 0.313267 ms, End: 5.424077 ms)
+run_stage4           -> small [6 cores] (Start: 5.424077 ms, Exec: 3.078340 ms, End: 8.502417 ms)
+run_stage5           -> small [6 cores] (Start: 8.502417 ms, Exec: 0.286578 ms, End: 8.788995 ms)
+run_stage6           -> small [6 cores] (Start: 21.867083 ms, Exec: 0.191093 ms, End: 22.058176 ms)
+run_stage7           -> small [6 cores] (Start: 22.058176 ms, Exec: 0.197198 ms, End: 22.255374 ms)
 
-Pipeline Instance 1 Total Time: 9.103383 ms
-(Start: 0.000000 ms, End: 9.103383 ms)
+Pipeline Instance 1 Total Time: 22.255374 ms
+(Start: 0.000000 ms, End: 22.255374 ms)
 
 Pipeline Instance 2:
 ----------------------------------------
 run_stage1           -> gpu [1 cores] (Start: 3.466720 ms, Exec: 1.644090 ms, End: 5.110810 ms)
 run_stage2           -> gpu [1 cores] (Start: 5.110810 ms, Exec: 3.466720 ms, End: 8.577530 ms)
-run_stage3           -> small [3 cores] (Start: 8.577530 ms, Exec: 0.291877 ms, End: 8.869407 ms)
-run_stage4           -> small [6 cores] (Start: 8.869407 ms, Exec: 3.078340 ms, End: 11.947747 ms)
-run_stage5           -> small [6 cores] (Start: 11.947747 ms, Exec: 0.286578 ms, End: 12.234325 ms)
-run_stage6           -> small [5 cores] (Start: 22.042891 ms, Exec: 0.138580 ms, End: 22.181471 ms)
-run_stage7           -> small [6 cores] (Start: 22.181471 ms, Exec: 0.197198 ms, End: 22.378669 ms)
+run_stage3           -> small [6 cores] (Start: 8.577530 ms, Exec: 0.313267 ms, End: 8.890797 ms)
+run_stage4           -> small [6 cores] (Start: 8.890797 ms, Exec: 3.078340 ms, End: 11.969137 ms)
+run_stage5           -> small [6 cores] (Start: 21.509563 ms, Exec: 0.286578 ms, End: 21.796141 ms)
+run_stage6           -> small [6 cores] (Start: 22.064281 ms, Exec: 0.191093 ms, End: 22.255374 ms)
+run_stage7           -> small [6 cores] (Start: 22.255374 ms, Exec: 0.197198 ms, End: 22.452572 ms)
 
-Pipeline Instance 2 Total Time: 18.911949 ms
-(Start: 3.466720 ms, End: 22.378669 ms)
+Pipeline Instance 2 Total Time: 18.985852 ms
+(Start: 3.466720 ms, End: 22.452572 ms)
 
 Pipeline Instance 3:
 ----------------------------------------
 run_stage1           -> gpu [1 cores] (Start: 6.933440 ms, Exec: 1.644090 ms, End: 8.577530 ms)
 run_stage2           -> gpu [1 cores] (Start: 8.577530 ms, Exec: 3.466720 ms, End: 12.044250 ms)
-run_stage3           -> small [3 cores] (Start: 12.044250 ms, Exec: 0.291877 ms, End: 12.336127 ms)
-run_stage4           -> small [6 cores] (Start: 12.336127 ms, Exec: 3.078340 ms, End: 15.414467 ms)
-run_stage5           -> small [6 cores] (Start: 15.414467 ms, Exec: 0.286578 ms, End: 15.701045 ms)
-run_stage6           -> small [5 cores] (Start: 22.240089 ms, Exec: 0.138580 ms, End: 22.378669 ms)
-run_stage7           -> small [6 cores] (Start: 22.378669 ms, Exec: 0.197198 ms, End: 22.575867 ms)
+run_stage3           -> small [6 cores] (Start: 12.044250 ms, Exec: 0.313267 ms, End: 12.357517 ms)
+run_stage4           -> small [6 cores] (Start: 12.357517 ms, Exec: 3.078340 ms, End: 15.435857 ms)
+run_stage5           -> small [6 cores] (Start: 21.796141 ms, Exec: 0.286578 ms, End: 22.082719 ms)
+run_stage6           -> small [6 cores] (Start: 22.261479 ms, Exec: 0.191093 ms, End: 22.452572 ms)
+run_stage7           -> small [6 cores] (Start: 22.452572 ms, Exec: 0.197198 ms, End: 22.649770 ms)
 
-Pipeline Instance 3 Total Time: 15.642427 ms
-(Start: 6.933440 ms, End: 22.575867 ms)
+Pipeline Instance 3 Total Time: 15.716330 ms
+(Start: 6.933440 ms, End: 22.649770 ms)
 
 Pipeline Instance 4:
 ----------------------------------------
 run_stage1           -> gpu [1 cores] (Start: 8.577530 ms, Exec: 1.644090 ms, End: 10.221620 ms)
 run_stage2           -> gpu [1 cores] (Start: 12.044250 ms, Exec: 3.466720 ms, End: 15.510970 ms)
-run_stage3           -> small [3 cores] (Start: 15.510970 ms, Exec: 0.291877 ms, End: 15.802847 ms)
-run_stage4           -> small [6 cores] (Start: 15.802847 ms, Exec: 3.078340 ms, End: 18.881187 ms)
-run_stage5           -> small [6 cores] (Start: 22.061329 ms, Exec: 0.286578 ms, End: 22.347907 ms)
-run_stage6           -> small [5 cores] (Start: 22.437287 ms, Exec: 0.138580 ms, End: 22.575867 ms)
-run_stage7           -> small [6 cores] (Start: 22.575867 ms, Exec: 0.197198 ms, End: 22.773065 ms)
+run_stage3           -> small [6 cores] (Start: 15.510970 ms, Exec: 0.313267 ms, End: 15.824237 ms)
+run_stage4           -> small [6 cores] (Start: 15.824237 ms, Exec: 3.078340 ms, End: 18.902577 ms)
+run_stage5           -> small [6 cores] (Start: 22.082719 ms, Exec: 0.286578 ms, End: 22.369297 ms)
+run_stage6           -> small [6 cores] (Start: 22.458677 ms, Exec: 0.191093 ms, End: 22.649770 ms)
+run_stage7           -> small [6 cores] (Start: 22.649770 ms, Exec: 0.197198 ms, End: 22.846968 ms)
 
-Pipeline Instance 4 Total Time: 14.195535 ms
-(Start: 8.577530 ms, End: 22.773065 ms)
+Pipeline Instance 4 Total Time: 14.269438 ms
+(Start: 8.577530 ms, End: 22.846968 ms)
 
 Pipeline Instance 5:
 ----------------------------------------
 run_stage1           -> gpu [1 cores] (Start: 10.221620 ms, Exec: 1.644090 ms, End: 11.865710 ms)
 run_stage2           -> gpu [1 cores] (Start: 15.510970 ms, Exec: 3.466720 ms, End: 18.977690 ms)
-run_stage3           -> small [3 cores] (Start: 18.977690 ms, Exec: 0.291877 ms, End: 19.269567 ms)
-run_stage4           -> small [6 cores] (Start: 19.269567 ms, Exec: 3.078340 ms, End: 22.347907 ms)
-run_stage5           -> small [6 cores] (Start: 22.347907 ms, Exec: 0.286578 ms, End: 22.634485 ms)
-run_stage6           -> small [5 cores] (Start: 22.634485 ms, Exec: 0.138580 ms, End: 22.773065 ms)
-run_stage7           -> small [6 cores] (Start: 22.773065 ms, Exec: 0.197198 ms, End: 22.970263 ms)
+run_stage3           -> small [6 cores] (Start: 18.977690 ms, Exec: 0.313267 ms, End: 19.290957 ms)
+run_stage4           -> small [6 cores] (Start: 19.290957 ms, Exec: 3.078340 ms, End: 22.369297 ms)
+run_stage5           -> small [6 cores] (Start: 22.369297 ms, Exec: 0.286578 ms, End: 22.655875 ms)
+run_stage6           -> small [6 cores] (Start: 22.655875 ms, Exec: 0.191093 ms, End: 22.846968 ms)
+run_stage7           -> small [6 cores] (Start: 22.846968 ms, Exec: 0.197198 ms, End: 23.044166 ms)
 
-Pipeline Instance 5 Total Time: 12.748643 ms
-(Start: 10.221620 ms, End: 22.970263 ms)
+Pipeline Instance 5 Total Time: 12.822546 ms
+(Start: 10.221620 ms, End: 23.044166 ms)
 
 Core Type Transitions:
 Pipeline 1: gpu -> small at run_stage3
@@ -349,28 +349,28 @@ Pipeline 4: gpu -> small at run_stage3
 Pipeline 5: gpu -> small at run_stage3
 
 Total Core Type Transitions: 5
-Total Pipeline Time: 22.970263 ms
+Total Pipeline Time: 23.044166 ms
 
 Task Distribution by Core Type:
 
 Pipeline Instance 1:
-small cores: run_stage3 (3 cores), run_stage4 (6 cores), run_stage5 (6 cores), run_stage6 (5 cores), run_stage7 (6 cores)
+small cores: run_stage3 (6 cores), run_stage4 (6 cores), run_stage5 (6 cores), run_stage6 (6 cores), run_stage7 (6 cores)
 gpu cores: run_stage1 (1 cores), run_stage2 (1 cores)
 
 Pipeline Instance 2:
-small cores: run_stage3 (3 cores), run_stage4 (6 cores), run_stage5 (6 cores), run_stage6 (5 cores), run_stage7 (6 cores)
+small cores: run_stage3 (6 cores), run_stage4 (6 cores), run_stage5 (6 cores), run_stage6 (6 cores), run_stage7 (6 cores)
 gpu cores: run_stage1 (1 cores), run_stage2 (1 cores)
 
 Pipeline Instance 3:
-small cores: run_stage3 (3 cores), run_stage4 (6 cores), run_stage5 (6 cores), run_stage6 (5 cores), run_stage7 (6 cores)
+small cores: run_stage3 (6 cores), run_stage4 (6 cores), run_stage5 (6 cores), run_stage6 (6 cores), run_stage7 (6 cores)
 gpu cores: run_stage1 (1 cores), run_stage2 (1 cores)
 
 Pipeline Instance 4:
-small cores: run_stage3 (3 cores), run_stage4 (6 cores), run_stage5 (6 cores), run_stage6 (5 cores), run_stage7 (6 cores)
+small cores: run_stage3 (6 cores), run_stage4 (6 cores), run_stage5 (6 cores), run_stage6 (6 cores), run_stage7 (6 cores)
 gpu cores: run_stage1 (1 cores), run_stage2 (1 cores)
 
 Pipeline Instance 5:
-small cores: run_stage3 (3 cores), run_stage4 (6 cores), run_stage5 (6 cores), run_stage6 (5 cores), run_stage7 (6 cores)
+small cores: run_stage3 (6 cores), run_stage4 (6 cores), run_stage5 (6 cores), run_stage6 (6 cores), run_stage7 (6 cores)
 gpu cores: run_stage1 (1 cores), run_stage2 (1 cores)
 
 ================================================================================
