@@ -1,0 +1,377 @@
+[
+  {
+    "schedule": {
+      "schedule_id": "3A021JEHN02756_CifarDense_schedule_001",
+      "device_id": "3A021JEHN02756",
+      "chunks": [
+        {
+          "name": "chunk1",
+          "hardware": "medium",
+          "threads": 1,
+          "stages": [
+            1,
+            2
+          ]
+        },
+        {
+          "name": "chunk2",
+          "hardware": "gpu",
+          "threads": 0,
+          "stages": [
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "name": "chunk3",
+          "hardware": "big",
+          "threads": 1,
+          "stages": [
+            8
+          ]
+        },
+        {
+          "name": "chunk4",
+          "hardware": "little",
+          "threads": 1,
+          "stages": [
+            9
+          ]
+        }
+      ]
+    },
+    "total_time": 44.647,
+    "max_chunk_time": 42.834
+  },
+  {
+    "schedule": {
+      "schedule_id": "3A021JEHN02756_CifarSparse_schedule_001",
+      "device_id": "3A021JEHN02756",
+      "chunks": [
+        {
+          "name": "chunk1",
+          "hardware": "big",
+          "threads": 1,
+          "stages": [
+            1
+          ]
+        },
+        {
+          "name": "chunk2",
+          "hardware": "gpu",
+          "threads": 0,
+          "stages": [
+            2
+          ]
+        },
+        {
+          "name": "chunk3",
+          "hardware": "medium",
+          "threads": 1,
+          "stages": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "name": "chunk4",
+          "hardware": "little",
+          "threads": 1,
+          "stages": [
+            9
+          ]
+        }
+      ]
+    },
+    "total_time": 0.826,
+    "max_chunk_time": 0.527
+  },
+  {
+    "schedule": {
+      "schedule_id": "3A021JEHN02756_Tree_schedule_001",
+      "device_id": "3A021JEHN02756",
+      "chunks": [
+        {
+          "name": "chunk1",
+          "hardware": "big",
+          "threads": 1,
+          "stages": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "name": "chunk2",
+          "hardware": "little",
+          "threads": 1,
+          "stages": [
+            6
+          ]
+        },
+        {
+          "name": "chunk3",
+          "hardware": "medium",
+          "threads": 1,
+          "stages": [
+            7
+          ]
+        }
+      ]
+    },
+    "total_time": 14.164,
+    "max_chunk_time": 11.564
+  },
+  {
+    "schedule": {
+      "schedule_id": "9b034f1b_CifarDense_schedule_001",
+      "device_id": "9b034f1b",
+      "chunks": [
+        {
+          "name": "chunk1",
+          "hardware": "big",
+          "threads": 1,
+          "stages": [
+            1,
+            2
+          ]
+        },
+        {
+          "name": "chunk2",
+          "hardware": "gpu",
+          "threads": 0,
+          "stages": [
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "name": "chunk3",
+          "hardware": "medium",
+          "threads": 1,
+          "stages": [
+            8
+          ]
+        },
+        {
+          "name": "chunk4",
+          "hardware": "little",
+          "threads": 1,
+          "stages": [
+            9
+          ]
+        }
+      ]
+    },
+    "total_time": 23.178,
+    "max_chunk_time": 21.613
+  },
+  {
+    "schedule": {
+      "schedule_id": "9b034f1b_CifarSparse_schedule_001",
+      "device_id": "9b034f1b",
+      "chunks": [
+        {
+          "name": "chunk1",
+          "hardware": "medium",
+          "threads": 1,
+          "stages": [
+            1
+          ]
+        },
+        {
+          "name": "chunk2",
+          "hardware": "gpu",
+          "threads": 0,
+          "stages": [
+            2
+          ]
+        },
+        {
+          "name": "chunk3",
+          "hardware": "big",
+          "threads": 1,
+          "stages": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "name": "chunk4",
+          "hardware": "little",
+          "threads": 1,
+          "stages": [
+            9
+          ]
+        }
+      ]
+    },
+    "total_time": 0.688,
+    "max_chunk_time": 0.399
+  },
+  {
+    "schedule": {
+      "schedule_id": "9b034f1b_Tree_schedule_001",
+      "device_id": "9b034f1b",
+      "chunks": [
+        {
+          "name": "chunk1",
+          "hardware": "big",
+          "threads": 1,
+          "stages": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "name": "chunk2",
+          "hardware": "little",
+          "threads": 1,
+          "stages": [
+            6
+          ]
+        },
+        {
+          "name": "chunk3",
+          "hardware": "medium",
+          "threads": 1,
+          "stages": [
+            7
+          ]
+        }
+      ]
+    },
+    "total_time": 14.443,
+    "max_chunk_time": 12.108
+  },
+  {
+    "schedule": {
+      "schedule_id": "ce0717178d7758b00b7e_CifarDense_schedule_001",
+      "device_id": "ce0717178d7758b00b7e",
+      "chunks": [
+        {
+          "name": "chunk1",
+          "hardware": "little",
+          "threads": 1,
+          "stages": [
+            1,
+            2
+          ]
+        },
+        {
+          "name": "chunk2",
+          "hardware": "gpu",
+          "threads": 0,
+          "stages": [
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "name": "chunk3",
+          "hardware": "big",
+          "threads": 1,
+          "stages": [
+            8,
+            9
+          ]
+        }
+      ]
+    },
+    "total_time": 161.712,
+    "max_chunk_time": 158.96699999999998
+  },
+  {
+    "schedule": {
+      "schedule_id": "ce0717178d7758b00b7e_CifarSparse_schedule_001",
+      "device_id": "ce0717178d7758b00b7e",
+      "chunks": [
+        {
+          "name": "chunk1",
+          "hardware": "big",
+          "threads": 1,
+          "stages": [
+            1
+          ]
+        },
+        {
+          "name": "chunk2",
+          "hardware": "gpu",
+          "threads": 0,
+          "stages": [
+            2
+          ]
+        },
+        {
+          "name": "chunk3",
+          "hardware": "little",
+          "threads": 1,
+          "stages": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        }
+      ]
+    },
+    "total_time": 0.757,
+    "max_chunk_time": 0.294
+  },
+  {
+    "schedule": {
+      "schedule_id": "ce0717178d7758b00b7e_Tree_schedule_001",
+      "device_id": "ce0717178d7758b00b7e",
+      "chunks": [
+        {
+          "name": "chunk1",
+          "hardware": "big",
+          "threads": 1,
+          "stages": [
+            1
+          ]
+        },
+        {
+          "name": "chunk2",
+          "hardware": "little",
+          "threads": 1,
+          "stages": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        }
+      ]
+    },
+    "total_time": 17.257,
+    "max_chunk_time": 12.467
+  }
+]
