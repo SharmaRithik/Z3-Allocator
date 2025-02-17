@@ -1,0 +1,33 @@
+1/2] Running bm-cifar-dense-vk on device: 3A021JEHN02756
+build/android/arm64-v8a/release/bm-cifar-dense-vk: 1 file pushed, 0 skipped. 542.3 MB/s (8073000 bytes in 0.014s)
+2025-01-07T09:49:30-08:00
+Running /data/local/tmp/bm-cifar-dense-vk
+Run on (8 X 1803 MHz CPU s)
+***WARNING*** CPU scaling is enabled, the benchmark real time measurements may be noisy and will incur extra overhead.
+name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message
+"iGPU_Vulkan/run_stage1/iterations:100",100,1.1437,0.0814144,ms,,,,,
+"iGPU_Vulkan/run_stage2/iterations:100",100,0.279894,0.0515873,ms,,,,,
+"iGPU_Vulkan/run_stage3/iterations:100",100,8.22522,0.482048,ms,,,,,
+"iGPU_Vulkan/run_stage4/iterations:100",100,0.281164,0.0613835,ms,,,,,
+"iGPU_Vulkan/run_stage5/iterations:100",100,11.7403,0.533007,ms,,,,,
+"iGPU_Vulkan/run_stage6/iterations:100",100,15.8217,0.551466,ms,,,,,
+"iGPU_Vulkan/run_stage7/iterations:100",100,10.6156,0.538571,ms,,,,,
+"iGPU_Vulkan/run_stage8/iterations:100",100,0.23626,0.0596354,ms,,,,,
+"iGPU_Vulkan/run_stage9/iterations:100",100,14.1281,0.45976,ms,,,,,
+
+[2/2] Running bm-cifar-dense-vk on device: 9b034f1b
+build/android/arm64-v8a/release/bm-cifar-dense-vk: 1 file pushed, 0 skipped. 445.3 MB/s (8073000 bytes in 0.017s)
+2025-01-07T09:47:04-08:00
+Running /data/local/tmp/bm-cifar-dense-vk
+Run on (8 X 2016 MHz CPU s)
+***WARNING*** CPU scaling is enabled, the benchmark real time measurements may be noisy and will incur extra overhead.
+name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message
+"iGPU_Vulkan/run_stage1/iterations:100",100,1.17812,0.236063,ms,,,,,
+"iGPU_Vulkan/run_stage2/iterations:100",100,0.951568,0.178022,ms,,,,,
+"iGPU_Vulkan/run_stage3/iterations:100",100,4.51579,0.459315,ms,,,,,
+"iGPU_Vulkan/run_stage4/iterations:100",100,0.73496,0.107497,ms,,,,,
+"iGPU_Vulkan/run_stage5/iterations:100",100,5.53037,0.501976,ms,,,,,
+"iGPU_Vulkan/run_stage6/iterations:100",100,8.59008,0.485069,ms,,,,,
+"iGPU_Vulkan/run_stage7/iterations:100",100,6.17687,0.522605,ms,,,,,
+"iGPU_Vulkan/run_stage8/iterations:100",100,0.530129,0.0875869,ms,,,,,
+"iGPU_Vulkan/run_stage9/iterations:100",100,4.13929,0.552394,ms,,,,,
